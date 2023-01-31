@@ -65,18 +65,6 @@ console.log(uniqueValues.length)
 
 // 5. Sugeneruokite du masyvus, kurių reikšmės yra atsitiktiniai skaičiai nuo 100 iki 999. Masyvų ilgiai 100. Masyvų reikšmės turi būti unikalios savo masyve(t.y.neturi kartotis).
 
-const randomArray1 = [...Array(100)].map((a, i, arr) => {
-    let random = parseInt(Math.random() * 900 + 100);
-    while (arr.indexOf(random) !== -1) {
-        random = parseInt(Math.random() * 900 + 100);
-    }
-    return random;
-});
-
-const randomArray2 = [...Array(100)].map(_ => parseInt(Math.random() * 900 + 100));
-
-
-console.log(new Set(randomArray1).size);
 
 // 6. Sugeneruokite masyvą, kuris būtų sudarytas iš reikšmių, kurios yra pirmame 5 uždavinio masyve, bet nėra antrame 5 uždavinio masyve.
 // 7. Sugeneruokite masyvą iš elementų, kurie kartojasi abiejuose 5 uždavinio masyvuose.
