@@ -56,5 +56,78 @@ const state = ['racoon', 'beaver', 'moose', 'fox'];
 // state.push('wolf'); // mirstam
 // state.sort(); // mirstam
 
-console.log(state);
-console.log([...state, 'wolf'].sort());
+// console.log(state);
+// console.log([...state, 'wolf'].sort());
+
+console.clear();
+
+const animalsCopy = [...state];
+
+/* animalsCopy.sort((a, b) => {
+    if (a > b) return -1;
+    if (a < b) return 1;
+    return 0;
+}); */
+
+animalsCopy.sort((a, b) => b.localeCompare(a));
+
+console.log(animalsCopy);
+
+const numbers = [88, 34, 10, 158, 1];
+
+console.log(numbers);
+
+numbers.sort((a, b) => b - a);
+
+console.log(numbers);
+
+console.clear();
+
+const simpleObj = {};
+
+simpleObj.name = 'John';
+simpleObj.surname = 'Smith';
+
+const simpleObj2 = { ...simpleObj };
+
+simpleObj2.name = 'Aaron';
+
+const simpleObj3 = {
+    name: 'Petras',
+    surname: 'Petraitis',
+};
+
+const name = 'Lina';
+const surname = 'Petraitienė';
+
+const simpleObj4 = {
+    name,
+    surname,
+};
+
+const prop = 'surname';
+
+const simpleObj5 = {};
+
+simpleObj5.name = 'Bronius';
+simpleObj5[prop] = 'Kisauskas';
+
+console.log(simpleObj, simpleObj2, simpleObj3, simpleObj4, simpleObj5);
+
+console.clear();
+
+const house = [simpleObj, simpleObj2, simpleObj3, simpleObj4, simpleObj5];
+
+house.sort((a, b) => {
+    if (a.surname > b.surname) return 1;
+    if (a.surname < b.surname) return -1;
+
+    // if surnames are equal, sort by name:
+    if (a.name > b.name) return 1;
+    if (a.name < b.name) return -1;
+
+    // if names are equal, return 0:
+    return 0;
+});
+
+console.log(house);
