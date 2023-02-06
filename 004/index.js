@@ -75,4 +75,6 @@ console.log(fancyMap);
 
 console.clear();
 
-console.log(fancyMap.get({ a: 1 })); // undefined
+for (const o of fancyMap) {
+    console.log(o);
+}
