@@ -72,3 +72,7 @@ arrMap.forEach((item) => fancyMap.set(item[0], item[1]));
 
 console.log(arrMap);
 console.log(fancyMap);
+
+console.clear();
+
+console.log(fancyMap.get({ a: 1 })); // undefined
