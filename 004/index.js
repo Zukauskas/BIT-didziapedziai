@@ -75,6 +75,62 @@ console.log(fancyMap);
 
 console.clear();
 
-for (const o of fancyMap) {
-    console.log(o);
-}
+let shopArr = [
+    { color: 'pink', dot: true, id: 1 },
+    { color: 'skyblue', dot: true, id: 5 },
+    { color: 'crimson', dot: false, id: 3 },
+    { color: 'pink', dot: false, id: 8 },
+];
+
+// add
+shopArr.push({ color: 'coral', dot: true, id: 17 });
+
+// find
+console.log(
+    '3:',
+    shopArr.find((item) => item.id === 3)
+);
+
+// check if exists
+console.log('9:', !!shopArr.find((item) => item.id === 9));
+
+// remove
+shopArr = shopArr.filter((item) => item.id !== 5);
+
+console.log(shopArr);
+
+console.clear();
+
+const shopMap = new Map([
+    [1, { color: 'pink', dot: true, id: 1 }],
+    [5, { color: 'skyblue', dot: true, id: 5 }],
+    [3, { color: 'crimson', dot: false, id: 3 }],
+    [8, { color: 'pink', dot: false, id: 8 }],
+]);
+
+console.log('3:', shopMap.get(3)); //find
+console.log('8:', shopMap.has(8)); // check if exists
+shopMap.delete(5); // remove
+shopMap.set(17, { color: 'coral', dot: true, id: 17 }); // add
+
+console.log(shopMap);
+console.clear();
+
+let shopArrJSON = JSON.stringify(shopArr);
+console.log(shopArrJSON);
+
+let shopArrFromJSON = JSON.parse(shopArrJSON);
+
+console.log(shopArrFromJSON);
+
+console.clear();
+
+let d = '42';
+
+const dJSON = JSON.stringify(d);
+
+// console.log(dJSON);
+
+const dFromJSON = JSON.parse(dJSON);
+
+console.log(dFromJSON, typeof dFromJSON);
