@@ -229,3 +229,52 @@ pirkiniuKrepselis.idetiDuonos(1);
 pirkiniuKrepselis.krepselioTurinys();
 
 console.clear();
+
+/* 
+
+8. Sukurti klasę Stikline. Sukurti savybes turis ir kiekis. Turis turi būti pasirenkamas objekto kūrimo metu. Parašyti metodą ipilti(kiekis), kuris keistų savybę kiekis. Jeigu stiklinės tūris yra mažesnis nei pilamas kiekis- kiekis netelpa ir būna lygus tūriui. Parašyti metodą ispilti(), kuris grąžiną kiekį. Pilant išpilamas visas kiekis, tas kas netelpa, nuteka per stalo viršų.  Sukurti metodą stiklinejeYra(), kuris į konsolę atspausdintų kiek stiklinėje yra skysčio. Sukurti tris stiklinės objektus su tūriais: 200, 150, 100. Didžiausią pripilti pilną ir tada ją ispilti į mažesnę stiklinę, o mažesnę į dar mažesnę.
+
+*/
+
+class Stikline {
+    constructor(turis) {
+        this.turis = turis;
+        this.kiekis = 0;
+    }
+
+    ipilti(kiekis) {
+        if (kiekis > this.turis) {
+            this.kiekis = this.turis;
+            return;
+        }
+        this.kiekis += kiekis;
+    }
+
+    ispilti() {
+        const kiekis = this.kiekis;
+        this.kiekis = 0;
+        return kiekis;
+    }
+
+    stiklinejeYra() {
+        console.log(this.kiekis);
+    }
+}
+
+const stikline1 = new Stikline(200);
+const stikline2 = new Stikline(150);
+const stikline3 = new Stikline(100);
+
+stikline1.ipilti(200);
+
+stikline1.stiklinejeYra(); // 200
+
+stikline2.ipilti(stikline1.ispilti());
+
+stikline2.stiklinejeYra(); // 150
+
+stikline3.ipilti(stikline2.ispilti());
+
+stikline3.stiklinejeYra(); // 100
+
+console.clear();
