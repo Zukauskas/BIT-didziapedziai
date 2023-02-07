@@ -68,3 +68,49 @@ pinigine.ideti(7);
 pinigine.ideti(1.5);
 
 pinigine.skaiciuoti();
+
+console.clear();
+
+/*
+ Sukurti klasę Troleibusas. Konstruktoriuje sukurti savybę keleiviuSkaicius kuri yra lygi 0. Parašyti du metodus: ilipa(keleiviuSkaicius) ir islipa(keleiviuSkaicius). O taip pat parašyti metoda vaziuoja(), kuris į konsolę išvestų troleibusu važiuojančių keleivių skaičių. Atkreipkite dėmesį, kad troleibusu važiuoti neigiamas keleivių skaičius negali.
+*/
+
+class Troleibusas {
+    constructor() {
+        this.keleiviuSkaicius = 0;
+    }
+
+    ilipa(keleiviai) {
+        this.keleiviuSkaicius += keleiviai;
+    }
+
+    islipa(keleiviai) {
+        if (this.keleiviuSkaicius - keleiviai < 0) {
+            this.keleiviuSkaicius = 0;
+            return;
+        }
+        this.keleiviuSkaicius -= keleiviai;
+    }
+
+    vaziuoja() {
+        console.log(this.keleiviuSkaicius);
+    }
+}
+
+const troleibusas = new Troleibusas();
+
+troleibusas.ilipa(10);
+
+troleibusas.vaziuoja();
+
+troleibusas.islipa(5);
+
+troleibusas.vaziuoja();
+
+troleibusas.islipa(3);
+
+troleibusas.vaziuoja();
+
+troleibusas.islipa(3);
+
+troleibusas.vaziuoja();
