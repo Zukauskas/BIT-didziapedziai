@@ -278,3 +278,49 @@ stikline3.ipilti(stikline2.ispilti());
 stikline3.stiklinejeYra(); // 100
 
 console.clear();
+
+/* 
+
+9. Sukurti klasę Grybas. Sukurti klasę Krepsys. Krepsys, kuri turi savybę dydis,kuriai konstruktoriuje yra priskiriama reikšmė 500 ir savybę prikrauta (kuri pradžioje lygi 0). Grybas turi tris savybes, kurios taip pat yra paskaičiuojamos konstruktoriuje: valgomas, sukirmijes, svoris. Kuriant Grybo objektą jo savybės turi būti atsitiktinai (rand funkcija) priskiriamos taip: valgomas- true arba false, sukirmijes- true arba false ir svoris- nuo 5 iki 45. Eiti grybauti, t.y. Kurti naujus Grybas objektus, jeigu nesukirmijęs ir valgomas dėti į Krepsi objektą, t.y. Vykdyti deti(grybas) metodą kol bus pririnktas pilnas krepšys nesukirmijusių ir valgomų grybų (gali būti truputį daugiau nei dydis).
+
+*/
+
+class Grybas {
+    constructor() {
+        this.valgomas = Math.random() >= 0.3;
+        this.sukirmijes = Math.random() >= 0.7;
+        this.svoris = Math.floor(Math.random() * 41) + 5;
+    }
+}
+
+class Krepsys {
+    constructor() {
+        this.dydis = 500;
+        this.prikrauta = 0;
+    }
+
+    deti(grybas) {
+        if (grybas.valgomas && !grybas.sukirmijes) {
+            console.log(grybas);
+            this.prikrauta += grybas.svoris;
+        }
+
+        if (this.prikrauta >= this.dydis) {
+            return true;
+        }
+    }
+}
+
+const krepsys = new Krepsys();
+
+let grybuKiekis = 0;
+
+while (true) {
+    const grybas = new Grybas();
+    if (krepsys.deti(grybas)) {
+        break;
+    }
+    grybuKiekis++;
+}
+
+console.log(grybuKiekis);
