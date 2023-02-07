@@ -54,12 +54,12 @@ Medinė dėžė 47 1025.74
 */
 
 const grandTotalAll = saskaitos.reduce((acc, cur) => acc + cur.grandTotal, 0);
-console.log(grandTotalAll);
+console.log(grandTotalAll.toFixed(2));
 
 const productsBoughtAll = products.map(product => {
     const amount = saskaitos.reduce((acc, cur) => acc + cur.productsBought.filter(p => p.title === product).reduce((acc, cur) => acc + cur.amount, 0), 0);
     const total = saskaitos.reduce((acc, cur) => acc + cur.productsBought.filter(p => p.title === product).reduce((acc, cur) => acc + cur.total, 0), 0);
-    return product + ' ' + amount + ' ' + total;
+    return product + ' ' + amount + ' ' + total.toFixed(2);
 });
 
 productsBoughtAll.forEach((product, index) => console.log(index + 1, product));
