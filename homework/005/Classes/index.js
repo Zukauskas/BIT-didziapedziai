@@ -33,3 +33,38 @@ kibiriukas.kiekPririnktaAkmenu();
 kibiriukas.pridetiDaugAkmenu(5);
 
 kibiriukas.kiekPririnktaAkmenu();
+
+/* 
+
+Sukurti klasę Pinigine. Konstruktoriuje sukurti dvi savybes popieriniaiPinigai ir metaliniaiPinigai. Parašyti metodą ideti(kiekis), kuris prideda pinigus į piniginę. Jeigu kiekis nedidesnis už 2, tai prideda prie metaliniaiPinigai, jeigu kitaip- prie popieriniaiPinigai. Parašykite metodą skaiciuoti(), kuris suskaičiuotų ir išvestų į konsolę popieriniaiPinigai ir metaliniaiPinigai sumą. Sukurti klasės objektą ir pademonstruoti veikimą. Nesvarbu kokios popierinės kupiūros ir metalinės monetos egzistuoja realiame pasaulyje.
+
+*/
+
+class Pinigine {
+    constructor(popieriniaiPinigai, metaliniaiPinigai) {
+        this.popieriniaiPinigai = popieriniaiPinigai;
+        this.metaliniaiPinigai = metaliniaiPinigai;
+    }
+
+    ideti(kiekis) {
+        if (kiekis <= 2) {
+            this.metaliniaiPinigai += kiekis;
+        } else {
+            this.popieriniaiPinigai += kiekis;
+        }
+    }
+
+    skaiciuoti() {
+        console.log(this.popieriniaiPinigai + this.metaliniaiPinigai);
+    }
+}
+
+const pinigine = new Pinigine(0, 0);
+
+pinigine.ideti(1);
+
+pinigine.ideti(7);
+
+pinigine.ideti(1.5);
+
+pinigine.skaiciuoti();
