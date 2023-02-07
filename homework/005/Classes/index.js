@@ -4,6 +4,9 @@
 Parašyti šiai klasei metodus, pridedančius akmenis: prideti1Akmeni() pridetiDaugAkmenu(kiekis) ir metodą išvedantį akmenų kiekį į konsolę- kiekPririnktaAkmenu().
 Sukurti vieną kibiro objektą ir pademonstruoti akmenų rinkimą į kibirą ir rezultatų išvedimą.
 
+
+7. (STATIC) Klasėje Kibiras1 (pirmas uždavinys) sukurti statinį metodą akmenuSkaiciusVisuoseKibiruose(), kuris rodytų bendrą visuose kibiruose pririnktų akmenų kiekį (visuose sukurtuose Kibiras objektuose). Skaičiuoti akmenim, kurie buvo surinkti visuose objektuose, sukurkite statini metodą bendrasAkmenuSkaicius(akmenuSkaicius), kuris pridėtų prie statinės savybės visiAkmenys (kurioje yra įrašytas ir saugomas bendras akmenų skaičius). Taip pat atitinkamai modifikuokite metodus prideti1Akmeni(),  pridetiDaugAkmenu(kiekis).
+
 */
 
 class Kibiras1 {
@@ -11,12 +14,24 @@ class Kibiras1 {
         this.akmenuKiekis = 0;
     }
 
+    static visiAkmenys = 0;
+
+    static bendrasAkmenuSkaicius(akmenuSkaicius) {
+        this.visiAkmenys += akmenuSkaicius;
+    }
+
+    static akmenuSkaiciusVisuoseKibiruose() {
+        console.log(this.visiAkmenys);
+    }
+
     prideti1Akmeni() {
         this.akmenuKiekis++;
+        Kibiras1.bendrasAkmenuSkaicius(1);
     }
 
     pridetiDaugAkmenu(kiekis) {
         this.akmenuKiekis += kiekis;
+        Kibiras1.bendrasAkmenuSkaicius(kiekis);
     }
 
     kiekPririnktaAkmenu() {
@@ -46,14 +61,26 @@ class Pinigine {
     constructor(popieriniaiPinigai, metaliniaiPinigai) {
         this.popieriniaiPinigai = popieriniaiPinigai;
         this.metaliniaiPinigai = metaliniaiPinigai;
+        this.monetuKiekis = 0;
+        this.banknotuKiekis = 0;
     }
 
     ideti(kiekis) {
         if (kiekis <= 2) {
             this.metaliniaiPinigai += kiekis;
+            this.monetuKiekis++;
         } else {
             this.popieriniaiPinigai += kiekis;
+            this.banknotuKiekis++;
         }
+    }
+
+    monetos() {
+        console.log(this.monetuKiekis);
+    }
+
+    banknotai() {
+        console.log(this.banknotuKiekis);
     }
 
     skaiciuoti() {
@@ -68,6 +95,12 @@ pinigine.ideti(1);
 pinigine.ideti(7);
 
 pinigine.ideti(1.5);
+
+pinigine.ideti(10);
+
+pinigine.monetos();
+
+pinigine.banknotai();
 
 pinigine.skaiciuoti();
 
