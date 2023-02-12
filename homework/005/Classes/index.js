@@ -98,6 +98,8 @@ pinigine.ideti(1.5);
 
 pinigine.ideti(10);
 
+pinigine.ideti(1);
+
 pinigine.monetos();
 
 pinigine.banknotai();
