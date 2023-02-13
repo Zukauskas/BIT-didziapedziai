@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 export function Click() {
     const buttonClicked = (color) => {
         return () => console.log(`You clicked the ${color} button!`);
@@ -15,6 +17,8 @@ export function Click() {
         console.log(e);
         console.log('Go RED!');
     };
+
+    const [state, setState] = useState(0);
 
     return (
         <div>
@@ -41,6 +45,10 @@ export function Click() {
 
             <button className="crimson" onClick={() => console.log('In one line')}>
                 #5
+            </button>
+
+            <button className="crimson" onClick={() => setState(state + 1)}>
+                {state}
             </button>
         </div>
     );
