@@ -38,7 +38,7 @@
 }
 
 h2 {
-    color: crimson;
+    color: darkcyan;
 }
 
 h1 {
@@ -52,5 +52,70 @@ h1 {
 
     &.yellow {
         background-color: yellow;
+    }
+}
+
+.list-bin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    i {
+        font-size: 15px;
+        color: #bbb;
+    }
+}
+
+// Button
+
+$buttonBlue: skyblue;
+$buttonGrey: grey;
+$buttonCrimson: crimson;
+$buttonCoral: coral;
+
+button {
+    display: inline-block;
+    padding: 0.3em 1.2em;
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 2em;
+    box-sizing: border-box;
+    border: none;
+    text-decoration: none;
+    text-transform: uppercase;
+    background-color: $buttonGrey;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #ffffff;
+    text-align: center;
+    transition: all 0.2s;
+    &.blue {
+        background-color: $buttonBlue;
+        &:hover {
+            background-color: darken($buttonBlue, 20%);
+        }
+    }
+    &.crimson {
+        background-color: $buttonCrimson;
+        &:hover {
+            background-color: darken($buttonCrimson, 20%);
+        }
+    }
+    &.coral {
+        background-color: $buttonCoral;
+        &:hover {
+            background-color: darken($buttonCoral, 20%);
+        }
+    }
+    &:hover {
+        background-color: darken($buttonGrey, 20%);
+    }
+}
+
+@media all and (max-width: 30em) {
+    button {
+        display: block;
+        margin: 0.2em auto;
     }
 }
