@@ -1,6 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
 import { useState } from 'react';
+import { randColor } from './Functions/randColor';
+import { v4 as uuidv4 } from 'uuid';
 
 export function App() {
     // const [sqColor, setSqColor] = useState('crimson');
@@ -28,6 +30,21 @@ export function App() {
     //     //this is the correct way to do it
     //};
 
+    const [square, setSquare] = useState([]);
+
+    const addSquare = () => {
+        setSquare((s) => [...s, { color: randColor(), id: uuidv4() }]);
+    };
+
+    const deleteSquare = (id) => {
+        setSquare((s) => s.filter((sq) => sq.id !== id));
+    };
+
+    const cloneSquare = (id) => {
+        const clone = square.find((sq) => sq.id === id);
+        setSquare((s) => [...s, { ...clone, id: uuidv4() }]);
+    };
+
     return (
         <div className="App">
             <header className="App-header">
@@ -41,6 +58,26 @@ export function App() {
                 <button className="crimson" onClick={addOne}>
                     Add 1
                 </button> */}
+                <div className="sq-bin">
+                    {/* {square.map((s, index) => (
+                        <Square key={index} sqColor={s} sqIndex={index} />
+                    ))} */}
+
+                    {square.map((s, index) => (
+                        <div key={index} className="sq spin" style={{ backgroundColor: s.color }}>
+                            <button className="crimson small" onClick={() => deleteSquare(s.id)}>
+                                DEL
+                            </button>
+                            <button className="blue small" onClick={() => cloneSquare(s.id)}>
+                                CLONE
+                            </button>
+                        </div>
+                    ))}
+                </div>
+
+                <button className="crimson" onClick={addSquare}>
+                    + []
+                </button>
             </header>
         </div>
     );
