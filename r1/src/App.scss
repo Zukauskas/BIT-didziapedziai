@@ -119,3 +119,26 @@ button {
         margin: 0.2em auto;
     }
 }
+
+.sq-bin {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    .sq {
+        width: 100px;
+        height: 100px;
+        border: 5px solid yellow;
+        border-radius: 10px;
+        margin: 5px;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 32px;
+        color: #ffffff;
+        background-color: darkgray;
+    }
+}
