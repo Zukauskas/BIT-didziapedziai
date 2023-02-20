@@ -1,84 +1,42 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.scss';
 import { useState } from 'react';
-import { randColor } from './Functions/randColor';
-import { v4 as uuidv4 } from 'uuid';
+import './App.scss';
+import AddButton from './Components/010/Buttons/AddButton';
+import ClearButton from './Components/010/Buttons/ClearButton';
+import ColorButton from './Components/010/Buttons/ColorButton';
+import DefaultSortButton from './Components/010/Buttons/DefaultSortButton';
+import Filter500Button from './Components/010/Buttons/Filter500Button';
+import ShowAllButton from './Components/010/Buttons/ShowAllButton';
+import SortButton from './Components/010/Buttons/SortButton';
+import SpinAllButton from './Components/010/Buttons/SpinAllButton';
+import StopSpinButton from './Components/010/Buttons/StopSpinButton';
+import Sq from './Components/010/Sq';
 
-export function App() {
-    // const [sqColor, setSqColor] = useState('crimson');
-    // const [count, setCount] = useState(0);
-
-    // //random color generator
-    // const changeColor = () => {
-    //     const symbols = '0123456789ABCDEF';
-    //     let color = '#';
-    //     for (let i = 0; i < 6; i++) {
-    //         color += symbols[Math.floor(Math.random() * 16)];
-    //     }
-    //     setSqColor(color);
-    // };
-
-    // const addOne = () => {
-    //     //setCount(count++); //you can't do this
-
-    //     /* setCount(count + 1);
-    //     setCount(count + 1);
-    //     can't do this either, because it edits the state twice in one render cycle */
-
-    //     setCount((c) => c + 1);
-    //     setCount((c) => c + 1);
-    //     //this is the correct way to do it
-    //};
-
-    const [square, setSquare] = useState([]);
-
-    const addSquare = () => {
-        setSquare((s) => [...s, { color: randColor(), id: uuidv4() }]);
-    };
-
-    const deleteSquare = (id) => {
-        setSquare((s) => s.filter((sq) => sq.id !== id));
-    };
-
-    const cloneSquare = (id) => {
-        const clone = square.find((sq) => sq.id === id);
-        setSquare((s) => [...s, { ...clone, id: uuidv4() }]);
-    };
+function App() {
+    const [sq, setSq] = useState([]);
 
     return (
         <div className="App">
             <header className="App-header">
-                {/* <div className="sq-bin">
-                    <div className="sq" style={{ backgroundColor: sqColor }}></div>
-                    <div className="sq">{count}</div>
-                </div>
-                <button className="blue" onClick={changeColor}>
-                    Change
-                </button>
-                <button className="crimson" onClick={addOne}>
-                    Add 1
-                </button> */}
                 <div className="sq-bin">
-                    {/* {square.map((s, index) => (
-                        <Square key={index} sqColor={s} sqIndex={index} />
-                    ))} */}
-
-                    {square.map((s, index) => (
-                        <div key={index} className="sq spin" style={{ backgroundColor: s.color }}>
-                            <button className="crimson small" onClick={() => deleteSquare(s.id)}>
-                                DEL
-                            </button>
-                            <button className="blue small" onClick={() => cloneSquare(s.id)}>
-                                CLONE
-                            </button>
-                        </div>
-                    ))}
+                    {sq.map((s, i) =>
+                        s.show ? <Sq key={i} s={s} i={i} setSq={setSq} /> : null
+                    )}
                 </div>
-
-                <button className="crimson" onClick={addSquare}>
-                    + []
-                </button>
+                <div className="sq-bin">
+                    <AddButton setSq={setSq} classes="blue" />
+                    <ClearButton setSq={setSq} classes="red" />
+                    <ColorButton setSq={setSq} classes="coral" />
+                    <StopSpinButton setSq={setSq} classes="" />
+                    <SpinAllButton setSq={setSq} classes="" />
+                    <SortButton setSq={setSq} classes="blue" />
+                    <DefaultSortButton setSq={setSq} classes="blue" />
+                    <Filter500Button setSq={setSq} classes="red" />
+                    <ShowAllButton setSq={setSq} classes="red" />
+                </div>
             </header>
         </div>
     );
 }
+
+export default App;
