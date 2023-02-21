@@ -1,38 +1,37 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
+'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
 import './App.scss';
-import AddButton from './Components/010/Buttons/AddButton';
-import ClearButton from './Components/010/Buttons/ClearButton';
-import ColorButton from './Components/010/Buttons/ColorButton';
-import DefaultSortButton from './Components/010/Buttons/DefaultSortButton';
-import Filter500Button from './Components/010/Buttons/Filter500Button';
-import ShowAllButton from './Components/010/Buttons/ShowAllButton';
-import SortButton from './Components/010/Buttons/SortButton';
-import SpinAllButton from './Components/010/Buttons/SpinAllButton';
-import StopSpinButton from './Components/010/Buttons/StopSpinButton';
-import Sq from './Components/010/Sq';
+import BaseButton from './Components/011/Design/BaseButton';
+import BlueButton from './Components/011/Design/BlueButton';
+import RedButton from './Components/011/Design/RedButton';
+import Sq from './Components/011/Design/Sq';
+import { withAdd, withClear, withColor } from './Components/011/HOCs/sq';
+// import Circle from './Components/011/Circle';
+// import Number from './Components/011/Number';
 
 function App() {
     const [sq, setSq] = useState([]);
 
+    const BaseButtonWithAdd = withAdd(BaseButton);
+    const RedButtonWithClear = withClear(RedButton);
+    const BlueButtonWithColor = withColor(BlueButton);
+
     return (
-        <div className="App">
-            <header className="App-header">
-                <div className="sq-bin">
-                    {sq.map((s, i) =>
-                        s.show ? <Sq key={i} s={s} i={i} setSq={setSq} /> : null
-                    )}
+        <div className='App'>
+            <header className='App-header'>
+                {/* <Circle>
+                <Number type="n1"/>
+                <Number type="n2"/>
+                <Number type="n3"/>
+                <Number type="n4"/>
+            </Circle> */}
+                <div className='sq-bin'>
+                    {sq.map((s, i) => (s.show ? <Sq key={i} s={s} i={i} setSq={setSq} /> : null))}
                 </div>
-                <div className="sq-bin">
-                    <AddButton setSq={setSq} classes="blue" />
-                    <ClearButton setSq={setSq} classes="red" />
-                    <ColorButton setSq={setSq} classes="coral" />
-                    <StopSpinButton setSq={setSq} classes="" />
-                    <SpinAllButton setSq={setSq} classes="" />
-                    <SortButton setSq={setSq} classes="blue" />
-                    <DefaultSortButton setSq={setSq} classes="blue" />
-                    <Filter500Button setSq={setSq} classes="red" />
-                    <ShowAllButton setSq={setSq} classes="red" />
+                <div className='sq-bin'>
+                    <BaseButtonWithAdd title='add' setSq={setSq} />
+                    <RedButtonWithClear title='clear' setSq={setSq} />
+                    <BlueButtonWithColor title='color' setSq={setSq} />
                 </div>
             </header>
         </div>
