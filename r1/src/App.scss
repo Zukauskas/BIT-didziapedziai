@@ -151,3 +151,38 @@ button {
         }
     }
 }
+
+.input-bin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    input {
+        width: 100%;
+        height: 40px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 0 10px;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+    }
+    button {
+        width: 100%;
+        height: 40px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 0 10px;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+        background-color: #ff8080;
+        color: #fff;
+        &:hover {
+            background-color: #bbb;
+        }
+    }
+}
+
+.wish-list {
+    list-style: none;
+}

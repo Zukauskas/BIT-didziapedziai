@@ -1,38 +1,38 @@
-'bootstrap/dist/css/bootstrap.min.css';
-import { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
-import BaseButton from './Components/011/Design/BaseButton';
-import BlueButton from './Components/011/Design/BlueButton';
-import RedButton from './Components/011/Design/RedButton';
-import Sq from './Components/011/Design/Sq';
-import { withAdd, withClear, withColor } from './Components/011/HOCs/sq';
-// import Circle from './Components/011/Circle';
-// import Number from './Components/011/Number';
+import { useState } from 'react';
 
 function App() {
-    const [sq, setSq] = useState([]);
+    const [wish, setWish] = useState('');
+    const [wishList, setWishList] = useState([]);
 
-    const BaseButtonWithAdd = withAdd(BaseButton);
-    const RedButtonWithClear = withClear(RedButton);
-    const BlueButtonWithColor = withColor(BlueButton);
+    const wishHandler = e => {
+        setWish(e.target.value);
+    };
+
+    const submitHandler = e => {
+        e.preventDefault();
+        setWishList([...wishList, wish]);
+        setWish('');
+    };
 
     return (
         <div className='App'>
             <header className='App-header'>
-                {/* <Circle>
-                <Number type="n1"/>
-                <Number type="n2"/>
-                <Number type="n3"/>
-                <Number type="n4"/>
-            </Circle> */}
-                <div className='sq-bin'>
-                    {sq.map((s, i) => (s.show ? <Sq key={i} s={s} i={i} setSq={setSq} /> : null))}
-                </div>
-                <div className='sq-bin'>
-                    <BaseButtonWithAdd title='add' setSq={setSq} />
-                    <RedButtonWithClear title='clear' setSq={setSq} />
-                    <BlueButtonWithColor title='color' setSq={setSq} />
-                </div>
+                <h1>Wish Bin</h1>
+                <form onSubmit={submitHandler}>
+                    <div className='input-bin'>
+                        <label>Enter Your Wish</label>
+                        <input type='text' onChange={wishHandler} value={wish} />
+                        <button type='submit'>Submit</button>
+                    </div>
+                </form>
+                <h2>Wish List</h2>
+                <ul className='wish-list'>
+                    {wishList.map((item, index) => (
+                        <li key={index}>{item}</li>
+                    ))}
+                </ul>
             </header>
         </div>
     );
