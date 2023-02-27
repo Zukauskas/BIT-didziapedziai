@@ -1,12 +1,11 @@
-function ClearButton({ classes, setSq }) {
+function ClearButton({classes, setSq}) {
+
     const clickHandler = () => {
         setSq([]);
-    };
+    }
 
     return (
-        <button className={classes} onClick={clickHandler}>
-            Clear
-        </button>
+        <button className={classes} onClick={clickHandler}>Clear</button>
     );
 }
 

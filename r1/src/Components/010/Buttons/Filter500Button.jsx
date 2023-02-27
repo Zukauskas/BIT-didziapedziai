@@ -1,16 +1,11 @@
-function Filter500Button({ classes, setSq }) {
+function Filter500Button({classes, setSq}) {
+
     const clickHandler = () => {
-        setSq((s) =>
-            s.map((s) =>
-                s.number > 500 ? { ...s, show: true } : { ...s, show: false }
-            )
-        );
-    };
+        setSq(s => s.map(s => s.number > 500 ? {...s, show: true} : {...s, show: false}));
+    }
 
     return (
-        <button className={classes} onClick={clickHandler}>
-            big 500
-        </button>
+        <button className={classes} onClick={clickHandler}>big 500</button>
     );
 }
 

@@ -9,7 +9,7 @@
 
 @media (prefers-reduced-motion: no-preference) {
     .App-logo {
-        animation: App-logo-spin infinite 5s linear;
+        animation: App-logo-spin infinite 0.5s linear;
     }
 }
 
@@ -17,9 +17,9 @@
     background-color: #282c34;
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
     font-size: calc(10px + 2vmin);
     color: white;
 }
@@ -43,100 +43,110 @@ h2 {
 
 h1 {
     &.blue {
-        background-color: blue;
+        background-color: #61dafb;
     }
-
     &.green {
-        background-color: green;
+        background-color: lightgreen;
     }
-
     &.yellow {
-        background-color: yellow;
+        background-color: lightyellow;
+    }
+}
+
+$brick: brown;
+.A .B {
+    .bin {
+        color: coral;
+        &.brick {
+            color: $brick;
+        }
+    }
+    .C {
+        .row-1 {
+            color: crimson;
+        }
+        .row-2 {
+            color: skyblue;
+        }
     }
 }
 
 .list-bin {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     width: 100%;
-    height: 100%;
+    align-items: center;
+    justify-content: space-between;
     i {
-        font-size: 15px;
-        color: #bbb;
+        font-size: 0.6em;
     }
 }
 
-// Button
-
-$buttonBlue: skyblue;
-$buttonGrey: grey;
-$buttonCrimson: crimson;
-$buttonCoral: coral;
-
+// ---------------------BUTTON
+$butonBlue: skyblue;
+$butonGray: gray;
+$butonRed: crimson;
+$butonCoral: coral;
 button {
     display: inline-block;
-    padding: 0.3em 1.2em;
-    margin: 0 0.3em 0.3em 0;
-    border-radius: 2em;
+    user-select: none;
+    padding: 7px 30px;
+    margin: 20px 10px;
+    border-radius: 10px;
     box-sizing: border-box;
-    border: none;
     text-decoration: none;
-    text-transform: uppercase;
-    background-color: $buttonGrey;
-    font-family: 'Roboto', sans-serif;
     font-weight: 300;
-    color: #ffffff;
+    font-size: 1.1em;
+    border: none;
+    outline: none;
     text-align: center;
     transition: all 0.2s;
+    text-transform: uppercase;
+    background-color: $butonGray;
+    color: white;
+    cursor: pointer;
+    &:hover {
+        background-color: darken($butonGray, 20%);
+    }
     &.blue {
-        background-color: $buttonBlue;
+        background-color: $butonBlue;
+        color: white;
         &:hover {
-            background-color: darken($buttonBlue, 20%);
+            background-color: darken($butonBlue, 20%);
         }
     }
-    &.crimson {
-        background-color: $buttonCrimson;
+    &.red {
+        background-color: $butonRed;
+        color: white;
         &:hover {
-            background-color: darken($buttonCrimson, 20%);
+            background-color: darken($butonRed, 20%);
         }
     }
     &.coral {
-        background-color: $buttonCoral;
+        background-color: $butonCoral;
+        color: white;
         &:hover {
-            background-color: darken($buttonCoral, 20%);
+            background-color: darken($butonCoral, 20%);
         }
     }
-    &:hover {
-        background-color: darken($buttonGrey, 20%);
-    }
-
     &.small {
-        padding: 0.3em 0.4em;
-        font-size: 0.4em;
-        border-radius: 0%;
-    }
-}
-
-@media all and (max-width: 30em) {
-    button {
-        display: block;
-        margin: 0.2em auto;
+        padding: 2px 3px;
+        margin: 2px 3px;
+        font-size: 20px;
+        border-radius: 5px;
     }
 }
 
 .sq-bin {
     display: flex;
-    flex-wrap: wrap;
+    width: 55%;
     align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin: 20px;
     .sq {
-        width: 100px;
-        height: 100px;
-        border: 2px solid yellow;
+        width: 150px;
+        height: 150px;
+        border: 5px solid #9acd32;
         border-radius: 10px;
         margin: 5px;
         box-sizing: border-box;
@@ -144,45 +154,122 @@ button {
         align-items: center;
         justify-content: center;
         font-size: 32px;
-        color: #ffffff;
+        color: white;
         background-color: darkgray;
+        flex-wrap: wrap;
         &.spin {
             animation: App-logo-spin infinite 5s linear;
+        }
+        .spin-back {
+            animation: App-logo-spin infinite 5s linear;
+            animation-direction: reverse;
+        }
+    }
+}
+
+.circle {
+    width: 300px;
+    height: 300px;
+    border: 10px dashed orange;
+    background-color: transparent;
+    border-radius: 50%;
+    margin: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    animation: App-logo-spin infinite 15s linear;
+    .circle-number {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: App-logo-spin infinite 15s linear;
+        animation-direction: reverse;
+        &.n1 {
+            background-color: darkorange;
+            top: 120px;
+            left: 10px;
+        }
+        &.n2 {
+            background-color: darkorchid;
+            top: 120px;
+            right: 10px;
+        }
+        &.n3 {
+            background-color: darkgoldenrod;
+            top: 10px;
+            left: 120px;
+        }
+        &.n4 {
+            background-color: darkolivegreen;
+            bottom: 10px;
+            right: 120px;
         }
     }
 }
 
 .input-bin {
+    margin: 10px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
+    border-radius: 15px;
     align-items: center;
-    justify-content: center;
-    height: 100%;
-    input {
-        width: 100%;
-        height: 40px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        padding: 0 10px;
-        box-sizing: border-box;
-        margin-bottom: 10px;
+    width: 100%;
+    max-width: 500px;
+    &.red {
+        background-color: crimson;
     }
-    button {
-        width: 100%;
-        height: 40px;
-        border: 1px solid #ccc;
+    label {
+        padding: 30px 0 10px 0;
+    }
+    input {
+        font-size: 0.8em;
+        padding: 2px 5px;
+        font-weight: lighter;
+        outline: none;
+        border: none;
         border-radius: 5px;
-        padding: 0 10px;
+        background-color: white;
+        width: 100%;
         box-sizing: border-box;
-        margin-bottom: 10px;
-        background-color: #ff8080;
-        color: #fff;
-        &:hover {
-            background-color: #bbb;
+    }
+    select {
+        font-size: 0.8em;
+        padding: 2px 5px;
+        font-weight: lighter;
+        outline: none;
+        border: none;
+        border-radius: 5px;
+        background-color: white;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .cb-bin {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+        label.cb {
+            font-size: 0.7em;
+            padding: 0 15px 0 5px;
+            cursor: pointer;
+            user-select: none;
+            color: darkgrey;
+        }
+        input {
+            display: none;
+        }
+        input:checked+label.cb {
+            color: white;
         }
     }
-}
-
-.wish-list {
-    list-style: none;
+    button {
+        max-width: 100px;
+    }
 }

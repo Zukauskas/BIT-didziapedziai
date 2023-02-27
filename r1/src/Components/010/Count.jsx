@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import Buttons from './Buttons';
-import Show from './Show';
+import Buttons from "./Buttons";
+import Show from "./Show";
 
 function Count() {
 
@@ -8,11 +8,10 @@ function Count() {
 
     return (
         <>
-    
             <Show count={count}/>
-            <Buttons setCount={setCount} count={count}/>
+            <Buttons setCount={setCount} />
         </>
-    );
+    )
 }
 
 export default Count;

@@ -1,21 +1,22 @@
-import { rand } from '../../Functions/rand.js';
-import { ShowName } from './ShowName.jsx';
+import rand from '../../Functions/rand';
+import ShowName from './ShowName';
 
-const fontFamily = 'monospace';
+function Animal({color, animalName, h1Class}) {
 
-export function Animal({ animalName, color, h1Class }) {
+    const fontFamily = 'monospace';
+
     return (
-        <h1
-            className={h1Class}
-            style={{
-                color,
-                padding: '10px 30px',
-                fontSize: rand(10, 25) + 'px',
-                letterSpacing: rand(0, 1) ? '5px' : null,
-                fontFamily,
-            }}
-        >
-            *<ShowName animalName={animalName} fontFamily={fontFamily} />* number: {rand(0, 100)}
-        </h1>
-    );
+        <h1 className={'old-class ' + h1Class} style={{
+            color,
+            padding: '8px 30px',
+            fontSize: rand(20, 50) + 'px',
+            letterSpacing: rand(0, 1) ? '5px' : null,
+        }}>*<ShowName animalName={animalName} fontFamily={fontFamily} />* No: {
+
+            rand(11, 15)
+
+        }</h1>
+    )
 }
+
+export default Animal;

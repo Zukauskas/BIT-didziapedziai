@@ -1,12 +1,11 @@
-function ShowAllButton({ classes, setSq }) {
+function ShowAllButton({classes, setSq}) {
+
     const clickHandler = () => {
-        setSq((s) => s.map((s) => ({ ...s, show: true })));
-    };
+        setSq(s => s.map(s => ({...s, show: true})));
+    }
 
     return (
-        <button className={classes} onClick={clickHandler}>
-            all
-        </button>
+        <button className={classes} onClick={clickHandler}>all</button>
     );
 }
 

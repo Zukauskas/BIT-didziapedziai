@@ -1,41 +1,47 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import Create from './Components/Dices/Create';
+import List from './Components/Dices/List';
+import { create, read } from './Components/Dices/localStorage';
+import './Components/Dices/style.scss';
+
+const KEY = 'FancyDices';
 
 function App() {
-    const [wish, setWish] = useState('');
-    const [wishList, setWishList] = useState([]);
 
-    const wishHandler = e => {
-        setWish(e.target.value);
-    };
+    const [lastUpdate, setLastUpdate] = useState(Date.now());
+    const [list, setList] = useState(null);
+    const [createData, setCreateData] = useState(null);
 
-    const submitHandler = e => {
-        e.preventDefault();
-        setWishList([...wishList, wish]);
-        setWish('');
-    };
+    useEffect(() => {
+
+        setTimeout(() => setList(read(KEY)), 1000);
+
+        // setList(read(KEY));
+
+    }, [lastUpdate]);
+
+    
+    useEffect(() => {
+        if (null === createData) {
+            return;
+        }
+        create(KEY, createData);
+        setLastUpdate(Date.now());
+    }, [createData]);
 
     return (
-        <div className='App'>
-            <header className='App-header'>
-                <h1>Wish Bin</h1>
-                <form onSubmit={submitHandler}>
-                    <div className='input-bin'>
-                        <label>Enter Your Wish</label>
-                        <input type='text' onChange={wishHandler} value={wish} />
-                        <button type='submit'>Submit</button>
-                    </div>
-                </form>
-                <h2>Wish List</h2>
-                <ul className='wish-list'>
-                    {wishList.map((item, index) => (
-                        <li key={index}>{item}</li>
-                    ))}
-                </ul>
-            </header>
+        <div className="dices">
+            <div className="content">
+                <div className="left">
+                    <Create setCreateData={setCreateData}/>
+                </div>
+                <div className="right">
+                    <List list={list} />
+                </div>
+            </div>
         </div>
     );
+
 }
 
 export default App;
