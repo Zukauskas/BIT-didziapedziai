@@ -1,12 +1,10 @@
-import Menu from "./Menu";
-
 function Home({title}) {
-	return (
-		<>
-			<Menu />
-			<h1>{title}</h1>
-		</>
-	);
+    return (
+        <>
+            <h1>{title}</h1>
+            <h3>home page</h3>
+        </>
+    )
 }
 
 export default Home;
